@@ -1,0 +1,37 @@
+services:
+
+  base:
+    image: localhost/omeka-base:4.1.0
+    build:
+      context: ../../base
+      args:
+        OMEKA_S_VERSION: ${ENV_OMEKA_S_VERSION}
+  ostindiska_db:
+    image: docker.io/library/mariadb:latest
+    depends_on:
+      - base
+    environment:
+      MYSQL_DATABASE: ${ENV_MYSQL_DATABASE}
+      MYSQL_ROOT_USER: ${ENV_MYSQL_ROOT_USER}
+      MYSQL_ROOT_PASSWORD: ${ENV_MYSQL_ROOT_PASSWORD}
+      MYSQL_USER: ${ENV_MYSQL_USER}
+      MYSQL_PASSWORD: ${ENV_MYSQL_PASSWORD}
+    volumes:
+      - ostindiska_db:/var/lib/mysql
+  ostindiska_web:
+    build: .
+    ports:
+      - ${ENV_PORTS}
+    depends_on:
+      - ostindiska_db
+    environment:
+      MYSQL_DATABASE: ${ENV_MYSQL_DATABASE}
+      MYSQL_USER: ${ENV_MYSQL_USER}
+      MYSQL_PASSWORD: ${ENV_MYSQL_PASSWORD}
+      MYSQL_HOST: ostindiska_db
+    volumes:
+      - ostindiska_files:/var/www/html/volume
+
+volumes:
+  ostindiska_files:
+  ostindiska_db:
