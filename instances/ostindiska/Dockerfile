@@ -1,4 +1,4 @@
-FROM omeka-base:4.1.0
+FROM localhost/omeka-base:4.1.0
 
 RUN mkdir -p /var/www/html/volume/files/ && \
     rm -Rf /var/www/html/files/ && \
