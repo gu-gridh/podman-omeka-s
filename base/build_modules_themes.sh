@@ -11,12 +11,13 @@ zip="/tmp/${name}.zip"
 
 if [[ "$repo" == "Daniel-KM" ]]; then
   url="https://gitlab.com/Daniel-KM/Omeka-S-module-${name}/-/archive/${version}/Omeka-S-module-${name}-${version}.zip"
-elif [[ "repo" == "omeka-s-themes" ]]; then
-  url="https://github.com/omeka-s-themes/${name}/releases/download/v${version}/${name}-${version}.zip"
+elif [[ "$repo" == "omeka-s-themes" ]]; then
+  url="https://github.com/omeka-s-themes/${name}/releases/download/v${version}/theme-${name}-v${version}.zip"
 else
   url="https://github.com/omeka-s-modules/${name}/releases/download/v${version}/${name}-${version}.zip"
 fi
 
+echo "Loading ${name} via ${url}..."
 curl -fsSL "$url" --output "$zip"
 unzip -q "$zip" -d "$path"
 
@@ -25,8 +26,9 @@ if [[ "$repo" == "Daniel-KM" ]]; then
 fi
 
 if [[ "$need_comp" == "composer" ]]; then
-  composer update
-  composer --working-dir="${path}/${name}" install --no-dev
+  # composer update
+  echo "Running composer for {$name}..."
+  composer --working-dir="${path}/${name}" install --no-dev --no-interaction --prefer-dist --no-progress
 fi
 
 rm "$zip"
