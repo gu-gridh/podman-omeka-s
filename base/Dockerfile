@@ -4,6 +4,8 @@ FROM php:8.3-apache
 # System deps
 RUN apt-get update && apt-get install -y \
 curl \
+nano \
+git \
 netcat-traditional \
 unzip \
 imagemagick \
@@ -30,6 +32,9 @@ RUN curl -L https://github.com/omeka/omeka-s/releases/download/v${OMEKA_S_VERSIO
     unzip -q /var/www/latest_omeka_s.zip -d /var/www/ && \
     rm /var/www/latest_omeka_s.zip && \
     cp -a /var/www/omeka-s/. /var/www/html
+
+COPY build_modules_themes.sh /usr/local/bin/build_modules_themes.sh
+RUN chmod +x /usr/local/bin/build_modules_themes.sh
 
 # Apache permissions
 RUN chown -R www-data:www-data /var/www/html

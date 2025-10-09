@@ -1,7 +1,7 @@
 services:
 
   base:
-    image: localhost/omeka-base:4.1.0
+    image: localhost/omeka-base:4.1.1
     build:
       context: ../../base
       args:
@@ -19,7 +19,17 @@ services:
     volumes:
       - ostindiska_db:/var/lib/mysql
   ostindiska_web:
-    build: .
+    build: 
+      context: .
+      args:
+        MODULE_AdvancedResourceTemplate_VERSION: ${MODULE_AdvancedResourceTemplate_VERSION}
+        MODULE_AnalyticsSnippet_VERSION: ${MODULE_AnalyticsSnippet_VERSION}
+        MODULE_Common_VERSION: ${MODULE_Common_VERSION}
+        MODULE_CSVImport_VERSION: ${MODULE_CSVImport_VERSION}
+        MODULE_CustomVocab_VERSION: ${MODULE_CustomVocab_VERSION}
+        MODULE_FacetedBrowse_VERSION: ${MODULE_FacetedBrowse_VERSION}
+        MODULE_NumericDataTypes_VERSION: ${MODULE_NumericDataTypes_VERSION}
+        THEME_Default_VERSION: ${THEME_Default_VERSION}
     ports:
       - ${ENV_PORTS}
     depends_on:
@@ -28,7 +38,7 @@ services:
       MYSQL_DATABASE: ${ENV_MYSQL_DATABASE}
       MYSQL_USER: ${ENV_MYSQL_USER}
       MYSQL_PASSWORD: ${ENV_MYSQL_PASSWORD}
-      MYSQL_HOST: ostindiska_db
+      MYSQL_HOST: ostindiska_db    
     volumes:
       - ostindiska_files:/var/www/html/volume
 
