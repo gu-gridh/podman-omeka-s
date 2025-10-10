@@ -1,0 +1,57 @@
+services:
+
+  base:
+    image: localhost/omeka-base:4.1.1
+    build:
+      context: ../../base
+      args:
+        OMEKA_S_VERSION: ${ENV_OMEKA_S_VERSION}
+  saga_db:
+    image: docker.io/library/mariadb:latest
+    depends_on:
+      - base
+    environment:
+      MYSQL_DATABASE: ${ENV_MYSQL_DATABASE}
+      MYSQL_ROOT_USER: ${ENV_MYSQL_ROOT_USER}
+      MYSQL_ROOT_PASSWORD: ${ENV_MYSQL_ROOT_PASSWORD}
+      MYSQL_USER: ${ENV_MYSQL_USER}
+      MYSQL_PASSWORD: ${ENV_MYSQL_PASSWORD}
+    volumes:
+      - saga_db:/var/lib/mysql
+  saga_web:
+    build: 
+      context: .
+      args:
+        MODULE_AdvancedResourceTemplate_VERSION: ${MODULE_AdvancedResourceTemplate_VERSION}
+        MODULE_AnalyticsSnippet_VERSION: ${MODULE_AnalyticsSnippet_VERSION}
+        MODULE_AnalyticsSnippetPiwik_VERSION: ${MODULE_AnalyticsSnippetPiwik_VERSION}
+        MODULE_ApiInfo_VERSION: ${MODULE_ApiInfo_VERSION}
+        MODULE_BlockPlus_VERSION: ${MODULE_BlockPlus_VERSION}
+        MODULE_BulkEdit_VERSION: ${MODULE_BulkEdit_VERSION}
+        MODULE_CleanUrl_VERSION: ${MODULE_CleanUrl_VERSION}
+        MODULE_Common_VERSION: ${MODULE_Common_VERSION}
+        MODULE_CopyResources_VERSION: ${MODULE_CopyResources_VERSION}
+        MODULE_CSSEditor_VERSION: ${MODULE_CSSEditor_VERSION}
+        MODULE_CSVImport_VERSION: ${MODULE_CSVImport_VERSION}
+        MODULE_CustomVocab_VERSION: ${MODULE_CustomVocab_VERSION}
+        MODULE_ImageAnnotate_VERSION: ${MODULE_ImageAnnotate_VERSION}
+        MODULE_ItemCarouselBlock_VERSION: ${MODULE_ItemCarouselBlock_VERSION}        
+        MODULE_Mapping_VERSION: ${MODULE_Mapping_VERSION}
+        MODULE_NumericDataTypes_VERSION: ${MODULE_NumericDataTypes_VERSION}
+        MODULE_Timeline_VERSION: ${MODULE_Timeline_VERSION}
+        THEME_Freedom_VERSION: ${THEME_Freedom_VERSION}
+    ports:
+      - ${ENV_PORTS}
+    depends_on:
+      - saga_db
+    environment:
+      MYSQL_DATABASE: ${ENV_MYSQL_DATABASE}
+      MYSQL_USER: ${ENV_MYSQL_USER}
+      MYSQL_PASSWORD: ${ENV_MYSQL_PASSWORD}
+      MYSQL_HOST: saga_db    
+    volumes:
+      - saga_files:/var/www/html/volume
+
+volumes:
+  saga_files:
+  saga_db:
