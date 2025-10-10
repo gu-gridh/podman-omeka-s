@@ -1,0 +1,56 @@
+services:
+
+  base:
+    image: localhost/omeka-base:4.1.1
+    build:
+      context: ../../base
+      args:
+        OMEKA_S_VERSION: ${ENV_OMEKA_S_VERSION}
+  didoc_db:
+    image: docker.io/library/mariadb:latest
+    depends_on:
+      - base
+    environment:
+      MYSQL_DATABASE: ${ENV_MYSQL_DATABASE}
+      MYSQL_ROOT_USER: ${ENV_MYSQL_ROOT_USER}
+      MYSQL_ROOT_PASSWORD: ${ENV_MYSQL_ROOT_PASSWORD}
+      MYSQL_USER: ${ENV_MYSQL_USER}
+      MYSQL_PASSWORD: ${ENV_MYSQL_PASSWORD}
+    volumes:
+      - didoc_db:/var/lib/mysql
+  didoc_web:
+    build: 
+      context: .
+      args:
+        MODULE_AdvancedResourceTemplate_VERSION: ${MODULE_AdvancedResourceTemplate_VERSION}
+        MODULE_AnalyticsSnippet_VERSION: ${MODULE_AnalyticsSnippet_VERSION}
+        MODULE_AnalyticsSnippetPiwik_VERSION: ${MODULE_AnalyticsSnippetPiwik_VERSION}
+        MODULE_BlockPlus_VERSION: ${MODULE_BlockPlus_VERSION}
+        MODULE_CleanUrl_VERSION: ${MODULE_CleanUrl_VERSION}
+        MODULE_Common_VERSION: ${MODULE_Common_VERSION}
+        MODULE_CopyResources_VERSION: ${MODULE_CopyResources_VERSION}
+        MODULE_CSSEditor_VERSION: ${MODULE_CSSEditor_VERSION}
+        MODULE_CSVImport_VERSION: ${MODULE_CSVImport_VERSION}
+        MODULE_CustomVocab_VERSION: ${MODULE_CustomVocab_VERSION}
+        MODULE_FacetedBrowse_VERSION: ${MODULE_FacetedBrowse_VERSION}
+        MODULE_FieldsAsTags_VERSION: ${MODULE_FieldsAsTags_VERSION}
+        MODULE_InverseProperties_VERSION: ${MODULE_InverseProperties_VERSION}
+        MODULE_Mapping_VERSION: ${MODULE_Mapping_VERSION}
+        MODULE_MetadataBrowse_VERSION: ${MODULE_MetadataBrowse_VERSION}
+        MODULE_NumericDataTypes_VERSION: ${MODULE_NumericDataTypes_VERSION}
+        THEME_ThanksRoy_VERSION: ${THEME_ThanksRoy_VERSION}
+    ports:
+      - ${ENV_PORTS}
+    depends_on:
+      - didoc_db
+    environment:
+      MYSQL_DATABASE: ${ENV_MYSQL_DATABASE}
+      MYSQL_USER: ${ENV_MYSQL_USER}
+      MYSQL_PASSWORD: ${ENV_MYSQL_PASSWORD}
+      MYSQL_HOST: didoc_db    
+    volumes:
+      - didoc_files:/var/www/html/volume
+
+volumes:
+  didoc_files:
+  didoc_db:
