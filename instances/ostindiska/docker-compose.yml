@@ -25,6 +25,7 @@ services:
         MODULE_AdvancedResourceTemplate_VERSION: ${MODULE_AdvancedResourceTemplate_VERSION}
         MODULE_AnalyticsSnippet_VERSION: ${MODULE_AnalyticsSnippet_VERSION}
         MODULE_Common_VERSION: ${MODULE_Common_VERSION}
+        MODULE_CSSEditor_VERSION: ${MODULE_CSSEditor_VERSION}
         MODULE_CSVImport_VERSION: ${MODULE_CSVImport_VERSION}
         MODULE_CustomVocab_VERSION: ${MODULE_CustomVocab_VERSION}
         MODULE_FacetedBrowse_VERSION: ${MODULE_FacetedBrowse_VERSION}
