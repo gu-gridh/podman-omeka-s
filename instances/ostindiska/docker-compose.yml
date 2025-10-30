@@ -18,6 +18,8 @@ services:
       MYSQL_PASSWORD: ${ENV_MYSQL_PASSWORD}
     volumes:
       - ostindiska_db:/var/lib/mysql
+    ports:
+      - ${ENV_DB_PORTS}
   ostindiska_web:
     build: 
       context: .
