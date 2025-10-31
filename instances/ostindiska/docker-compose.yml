@@ -44,8 +44,7 @@ services:
       MYSQL_PASSWORD: ${ENV_MYSQL_PASSWORD}
       MYSQL_HOST: ostindiska_db
     volumes:
-      - ostindiska_files:/var/www/html/volume
+      - ${ENV_Volume}
 
 volumes:
-  ostindiska_files:
   ostindiska_db:

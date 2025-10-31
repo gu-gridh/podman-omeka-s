@@ -1,9 +1,5 @@
 FROM localhost/omeka-base:4.1.1
 
-RUN mkdir -p /var/www/html/volume/files/ && \
-    rm -Rf /var/www/html/files/ && \
-    ln -s /var/www/html/volume/files/ /var/www/html/files
-
 ARG MODULE_AdvancedResourceTemplate_VERSION
 ARG MODULE_AnalyticsSnippet_VERSION
 ARG MODULE_Common_VERSION
