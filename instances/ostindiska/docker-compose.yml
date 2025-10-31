@@ -31,6 +31,7 @@ services:
         MODULE_CSVImport_VERSION: ${MODULE_CSVImport_VERSION}
         MODULE_CustomVocab_VERSION: ${MODULE_CustomVocab_VERSION}
         MODULE_FacetedBrowse_VERSION: ${MODULE_FacetedBrowse_VERSION}
+        MODULE_Internationalisation_VERSION: ${MODULE_Internationalisation_VERSION}
         MODULE_NumericDataTypes_VERSION: ${MODULE_NumericDataTypes_VERSION}
         THEME_Default_VERSION: ${THEME_Default_VERSION}
     ports:
@@ -41,7 +42,7 @@ services:
       MYSQL_DATABASE: ${ENV_MYSQL_DATABASE}
       MYSQL_USER: ${ENV_MYSQL_USER}
       MYSQL_PASSWORD: ${ENV_MYSQL_PASSWORD}
-      MYSQL_HOST: ostindiska_db    
+      MYSQL_HOST: ostindiska_db
     volumes:
       - ostindiska_files:/var/www/html/volume
 
