@@ -1,5 +1,7 @@
 FROM localhost/omeka-base:4.1.1
 
+RUN mkdir -p /var/www/html/files/
+
 ARG MODULE_AdvancedResourceTemplate_VERSION
 ARG MODULE_AnalyticsSnippet_VERSION
 ARG MODULE_Common_VERSION

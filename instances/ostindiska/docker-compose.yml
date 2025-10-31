@@ -44,7 +44,7 @@ services:
       MYSQL_PASSWORD: ${ENV_MYSQL_PASSWORD}
       MYSQL_HOST: ostindiska_db
     volumes:
-      - ${ENV_Volume}
+      - ${ENV_VOLUME}
 
 volumes:
   ostindiska_db:
