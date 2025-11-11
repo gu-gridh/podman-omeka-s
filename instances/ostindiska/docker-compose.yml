@@ -6,6 +6,14 @@ services:
       context: ../../base
       args:
         OMEKA_S_VERSION: ${ENV_OMEKA_S_VERSION}
+  solr:
+    image: docker.io/library/solr:9.10.0
+    container-name: ostindiska_solr
+    command: ["solr-precreate", "omeka", "/opt/solr/server/solr/configsets/_default"]
+    environment:
+      SOLR_OPTS: -Dsolr.jetty.host=0.0.0.0
+    volumes:
+      - ostindiska_index:/var/solr
   ostindiska_db:
     image: docker.io/library/mariadb:latest
     depends_on:
@@ -31,6 +39,8 @@ services:
         MODULE_CSVImport_VERSION: ${MODULE_CSVImport_VERSION}
         MODULE_CustomVocab_VERSION: ${MODULE_CustomVocab_VERSION}
         MODULE_FacetedBrowse_VERSION: ${MODULE_FacetedBrowse_VERSION}
+        MODULE_Search_VERSION: ${MODULE_Search_VERSION}
+        MODULE_Solr_VERSION: ${MODULE_Solr_VERSION}
         MODULE_Internationalisation_VERSION: ${MODULE_Internationalisation_VERSION}
         MODULE_NumericDataTypes_VERSION: ${MODULE_NumericDataTypes_VERSION}
         THEME_Default_VERSION: ${THEME_Default_VERSION}
@@ -38,6 +48,7 @@ services:
       - ${ENV_PORTS}
     depends_on:
       - ostindiska_db
+      - solr
     environment:
       MYSQL_DATABASE: ${ENV_MYSQL_DATABASE}
       MYSQL_USER: ${ENV_MYSQL_USER}
@@ -48,3 +59,4 @@ services:
 
 volumes:
   ostindiska_db:
+  ostindiska_index:

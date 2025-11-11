@@ -11,6 +11,8 @@ zip="/tmp/${name}.zip"
 
 if [[ "$repo" == "Daniel-KM" ]]; then
   url="https://gitlab.com/Daniel-KM/Omeka-S-module-${name}/-/archive/${version}/Omeka-S-module-${name}-${version}.zip"
+elif [[ "$repo" == "BibLibre" ]]; then
+  url="https://github.com/biblibre/omeka-s-module-${name}/archive/refs/tags/v${version}.zip"
 elif [[ "$repo" == "omeka-s-themes" ]]; then
   url="https://github.com/omeka-s-themes/${name}/releases/download/v${version}/theme-${name}-v${version}.zip"
 else
@@ -23,6 +25,8 @@ unzip -q "$zip" -d "$path"
 
 if [[ "$repo" == "Daniel-KM" ]]; then
   mv "${path}/Omeka-S-module-${name}-${version}" "${path}/${name}"
+elif [[ "$repo" == "BibLibre" ]]; then
+  mv "${path}/omeka-s-module-${name}-${version}" "${path}/${name}"
 fi
 
 if [[ "$need_comp" == "composer" ]]; then
