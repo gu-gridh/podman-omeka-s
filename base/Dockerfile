@@ -13,7 +13,9 @@ libpng-dev \
 libjpeg-dev \
 libtiff-dev \
 libxml2-dev \
-libicu-dev
+libicu-dev \
+nodejs \
+npm
 
 # PHP extensions
 RUN docker-php-ext-install \
@@ -33,8 +35,7 @@ RUN curl -L https://github.com/omeka/omeka-s/releases/download/v${OMEKA_S_VERSIO
     rm /var/www/latest_omeka_s.zip && \
     cp -a /var/www/omeka-s/. /var/www/html
 
-COPY build_modules_themes.sh /usr/local/bin/build_modules_themes.sh
-RUN chmod +x /usr/local/bin/build_modules_themes.sh
+COPY --chmod=755 build_modules_themes.sh /usr/local/bin/build_modules_themes.sh
 
 # Apache permissions
 RUN chown -R www-data:www-data /var/www/html

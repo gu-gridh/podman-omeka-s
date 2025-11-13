@@ -14,7 +14,7 @@ if [[ "$repo" == "Daniel-KM" ]]; then
 elif [[ "$repo" == "BibLibre" ]]; then
   url="https://github.com/biblibre/omeka-s-module-${name}/archive/refs/tags/v${version}.zip"
 elif [[ "$repo" == "omeka-s-themes" ]]; then
-  url="https://github.com/omeka-s-themes/${name}/releases/download/v${version}/theme-${name}-v${version}.zip"
+  url="https://github.com/omeka-s-themes/${name}/archive/refs/tags/v${version}.zip"
 else
   url="https://github.com/omeka-s-modules/${name}/releases/download/v${version}/${name}-${version}.zip"
 fi
@@ -27,6 +27,8 @@ if [[ "$repo" == "Daniel-KM" ]]; then
   mv "${path}/Omeka-S-module-${name}-${version}" "${path}/${name}"
 elif [[ "$repo" == "BibLibre" ]]; then
   mv "${path}/omeka-s-module-${name}-${version}" "${path}/${name}"
+elif [[ "$repo" == "omeka-s-themes" ]]; then
+  mv "${path}/${name}-${version}" "${path}/${name}"
 fi
 
 if [[ "$need_comp" == "composer" ]]; then
