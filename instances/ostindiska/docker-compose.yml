@@ -9,7 +9,9 @@ services:
   solr:
     image: docker.io/library/solr:9.10.0
     container-name: ostindiska_solr
-    command: ["solr-precreate", "omeka"]
+    command: ["solr-precreate", "omeka", "_default"]
+    security_opt:
+      - no-new-privileges:true
     environment:
       SOLR_OPTS: -Dsolr.jetty.host=0.0.0.0
     volumes:
