@@ -5,7 +5,7 @@ services:
     build:
       context: ../../base
       args:
-        OMEKA_S_VERSION: ${ENV_OMEKA_S_VERSION}
+        OMEKA_S_VERSION: "4.1.1"
   didoc_db:
     image: docker.io/library/mariadb:latest
     depends_on:
@@ -22,23 +22,23 @@ services:
     build: 
       context: .
       args:
-        MODULE_AdvancedResourceTemplate_VERSION: ${MODULE_AdvancedResourceTemplate_VERSION}
-        MODULE_AnalyticsSnippet_VERSION: ${MODULE_AnalyticsSnippet_VERSION}
-        MODULE_AnalyticsSnippetPiwik_VERSION: ${MODULE_AnalyticsSnippetPiwik_VERSION}
-        MODULE_BlockPlus_VERSION: ${MODULE_BlockPlus_VERSION}
-        MODULE_CleanUrl_VERSION: ${MODULE_CleanUrl_VERSION}
-        MODULE_Common_VERSION: ${MODULE_Common_VERSION}
-        MODULE_CopyResources_VERSION: ${MODULE_CopyResources_VERSION}
-        MODULE_CSSEditor_VERSION: ${MODULE_CSSEditor_VERSION}
-        MODULE_CSVImport_VERSION: ${MODULE_CSVImport_VERSION}
-        MODULE_CustomVocab_VERSION: ${MODULE_CustomVocab_VERSION}
-        MODULE_FacetedBrowse_VERSION: ${MODULE_FacetedBrowse_VERSION}
-        MODULE_FieldAsTags_VERSION: ${MODULE_FieldAsTags_VERSION}
-        MODULE_InverseProperties_VERSION: ${MODULE_InverseProperties_VERSION}
-        MODULE_Mapping_VERSION: ${MODULE_Mapping_VERSION}
-        MODULE_MetadataBrowse_VERSION: ${MODULE_MetadataBrowse_VERSION}
-        MODULE_NumericDataTypes_VERSION: ${MODULE_NumericDataTypes_VERSION}
-        THEME_ThanksRoy_VERSION: ${THEME_ThanksRoy_VERSION}
+        MODULE_AdvancedResourceTemplate_VERSION: "3.4.45"
+        MODULE_AnalyticsSnippet_VERSION: "3.4.5"
+        MODULE_AnalyticsSnippetPiwik_VERSION: "3.4.8"
+        MODULE_BlockPlus_VERSION: "3.4.42"
+        MODULE_CleanUrl_VERSION: "3.17.10"
+        MODULE_Common_VERSION: "3.4.72"
+        MODULE_CopyResources_VERSION: "1.0.1"
+        MODULE_CSSEditor_VERSION: "1.3.1"
+        MODULE_CSVImport_VERSION: "2.6.2"
+        MODULE_CustomVocab_VERSION: "2.0.2"
+        MODULE_FacetedBrowse_VERSION: "1.8.0"
+        MODULE_FieldAsTags_VERSION: "1.0.2"
+        MODULE_InverseProperties_VERSION: "1.1.1"
+        MODULE_Mapping_VERSION: "2.2.0"
+        MODULE_MetadataBrowse_VERSION: "1.6.0"
+        MODULE_NumericDataTypes_VERSION: "1.13.0"
+        THEME_ThanksRoy_VERSION: "1.2.2"
     ports:
       - ${ENV_PORTS}
     depends_on:
