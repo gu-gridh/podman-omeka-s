@@ -33,7 +33,7 @@ services:
         MODULE_CSVImport_VERSION: ${MODULE_CSVImport_VERSION}
         MODULE_CustomVocab_VERSION: ${MODULE_CustomVocab_VERSION}
         MODULE_FacetedBrowse_VERSION: ${MODULE_FacetedBrowse_VERSION}
-        MODULE_FieldsAsTags_VERSION: ${MODULE_FieldsAsTags_VERSION}
+        MODULE_FieldAsTags_VERSION: ${MODULE_FieldAsTags_VERSION}
         MODULE_InverseProperties_VERSION: ${MODULE_InverseProperties_VERSION}
         MODULE_Mapping_VERSION: ${MODULE_Mapping_VERSION}
         MODULE_MetadataBrowse_VERSION: ${MODULE_MetadataBrowse_VERSION}

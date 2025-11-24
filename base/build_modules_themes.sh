@@ -13,8 +13,12 @@ if [[ "$repo" == "Daniel-KM" ]]; then
   url="https://gitlab.com/Daniel-KM/Omeka-S-module-${name}/-/archive/${version}/Omeka-S-module-${name}-${version}.zip"
 elif [[ "$repo" == "BibLibre" ]]; then
   url="https://github.com/biblibre/omeka-s-module-${name}/archive/refs/tags/v${version}.zip"
+elif [[ "$repo" == "Libnamic" ]]; then
+  url="https://github.com/Libnamic/Omeka-S-${name}/archive/refs/tags/v${version}.zip"
 elif [[ "$repo" == "omeka-s-themes" ]]; then
   url="https://github.com/omeka-s-themes/${name}/archive/refs/tags/v${version}.zip"
+elif [[ "$name" == "CopyResources" ]]; then
+  url="https://github.com/omeka-s-modules/${name}/archive/refs/tags/v${version}.zip"
 else
   url="https://github.com/omeka-s-modules/${name}/releases/download/v${version}/${name}-${version}.zip"
 fi
