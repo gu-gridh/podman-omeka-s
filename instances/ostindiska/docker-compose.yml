@@ -41,6 +41,7 @@ services:
         MODULE_CSSEditor_VERSION: ${MODULE_CSSEditor_VERSION}
         MODULE_CSVImport_VERSION: ${MODULE_CSVImport_VERSION}
         MODULE_CustomVocab_VERSION: ${MODULE_CustomVocab_VERSION}
+        MODULE_Datavis_VERSION: ${MODULE_Datavis_VERSION}
         MODULE_FacetedBrowse_VERSION: ${MODULE_FacetedBrowse_VERSION}
         MODULE_Search_VERSION: ${MODULE_Search_VERSION}
         MODULE_Solr_VERSION: ${MODULE_Solr_VERSION}

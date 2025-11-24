@@ -17,7 +17,7 @@ elif [[ "$repo" == "Libnamic" ]]; then
   url="https://github.com/Libnamic/Omeka-S-${name}/archive/refs/tags/v${version}.zip"
 elif [[ "$repo" == "omeka-s-themes" ]]; then
   url="https://github.com/omeka-s-themes/${name}/archive/refs/tags/v${version}.zip"
-elif [[ "$name" == "CopyResources" ]]; then
+elif [[ "$name" == "CopyResources" || "$name" == "Datavis" ]]; then
   url="https://github.com/omeka-s-modules/${name}/archive/refs/tags/v${version}.zip"
 else
   url="https://github.com/omeka-s-modules/${name}/releases/download/v${version}/${name}-${version}.zip"
@@ -31,7 +31,7 @@ if [[ "$repo" == "Daniel-KM" ]]; then
   mv "${path}/Omeka-S-module-${name}-${version}" "${path}/${name}"
 elif [[ "$repo" == "BibLibre" ]]; then
   mv "${path}/omeka-s-module-${name}-${version}" "${path}/${name}"
-elif [[ "$repo" == "omeka-s-themes" ]]; then
+elif [[ "$repo" == "omeka-s-themes" || "$name" == "Datavis" ]]; then
   mv "${path}/${name}-${version}" "${path}/${name}"
 fi
 
