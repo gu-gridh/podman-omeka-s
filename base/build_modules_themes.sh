@@ -15,6 +15,8 @@ elif [[ "$repo" == "BibLibre" ]]; then
   url="https://github.com/biblibre/omeka-s-module-${name}/archive/refs/tags/v${version}.zip"
 elif [[ "$repo" == "Libnamic" ]]; then
   url="https://github.com/Libnamic/Omeka-S-${name}/archive/refs/tags/v${version}.zip"
+elif [[ "$repo" == "didoc" ]]; then
+  url="https://github.com/gu-gridh/thanksroy/archive/refs/heads/didoc.zip"
 elif [[ "$repo" == "omeka-s-themes" ]]; then
   url="https://github.com/omeka-s-themes/${name}/archive/refs/tags/v${version}.zip"
 elif [[ "$name" == "CopyResources" || "$name" == "Datavis" ]]; then
@@ -31,8 +33,10 @@ if [[ "$repo" == "Daniel-KM" ]]; then
   mv "${path}/Omeka-S-module-${name}-${version}" "${path}/${name}"
 elif [[ "$repo" == "BibLibre" ]]; then
   mv "${path}/omeka-s-module-${name}-${version}" "${path}/${name}"
-elif [[ "$repo" == "omeka-s-themes" || "$name" == "Datavis" ]]; then
+elif [[ "$repo" == "omeka-s-themes" || "$name" == "CopyResources" || "$name" == "Datavis" ]]; then
   mv "${path}/${name}-${version}" "${path}/${name}"
+elif [[ "$repo" == "didoc" ]]; then
+  mv "${path}/thanksroy-didoc" "${path}/${name}"
 fi
 
 if [[ "$need_comp" == "composer" ]]; then
