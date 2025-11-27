@@ -6,9 +6,10 @@ services:
       context: ../../base
       args:
         OMEKA_S_VERSION: "4.1.1"
+
   solr:
     image: docker.io/library/solr:9.10.0
-    container-name: ostindiska_solr
+    container_name: ostindiska-solr
     command: ["solr-precreate", "omeka", "_default"]
     security_opt:
       - no-new-privileges:true
@@ -16,8 +17,10 @@ services:
       SOLR_OPTS: -Dsolr.jetty.host=0.0.0.0
     volumes:
       - ostindiska_index:/var/solr
-  ostindiska_db:
+
+  ostindiska-db:
     image: docker.io/library/mariadb:latest
+    container_name: ostindiska-db
     depends_on:
       - base
     environment:
@@ -30,7 +33,9 @@ services:
       - ostindiska_db:/var/lib/mysql
     ports:
       - ${ENV_DB_PORTS}
-  ostindiska_web:
+
+  ostindiska-web:
+    container_name: ostindiska-web
     build: 
       context: .
       args:
@@ -52,13 +57,13 @@ services:
     ports:
       - ${ENV_PORTS}
     depends_on:
-      - ostindiska_db
+      - ostindiska-db
       - solr
     environment:
       MYSQL_DATABASE: ${ENV_MYSQL_DATABASE}
       MYSQL_USER: ${ENV_MYSQL_USER}
       MYSQL_PASSWORD: ${ENV_MYSQL_PASSWORD}
-      MYSQL_HOST: ostindiska_db
+      MYSQL_HOST: ostindiska-db
     volumes:
       - ${ENV_VOLUME}
 

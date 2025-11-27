@@ -6,8 +6,10 @@ services:
       context: ../../base
       args:
         OMEKA_S_VERSION: "4.1.1"
-  didoc_db:
+
+  didoc-db:
     image: docker.io/library/mariadb:latest
+    container_name: didoc-db
     depends_on:
       - base
     environment:
@@ -18,7 +20,9 @@ services:
       MYSQL_PASSWORD: ${ENV_MYSQL_PASSWORD}
     volumes:
       - didoc_db:/var/lib/mysql
-  didoc_web:
+
+  didoc-web:
+    container_name: didoc-web
     build: 
       context: .
       args:
@@ -28,6 +32,7 @@ services:
         MODULE_BlockPlus_VERSION: "3.4.42"
         MODULE_CleanUrl_VERSION: "3.17.10"
         MODULE_Common_VERSION: "3.4.72"
+        MODULE_ContactUs_VERSION: "3.4.25"
         MODULE_CopyResources_VERSION: "1.0.1"
         MODULE_CSSEditor_VERSION: "1.3.1"
         MODULE_CSVImport_VERSION: "2.6.2"
@@ -41,12 +46,12 @@ services:
     ports:
       - ${ENV_PORTS}
     depends_on:
-      - didoc_db
+      - didoc-db
     environment:
       MYSQL_DATABASE: ${ENV_MYSQL_DATABASE}
       MYSQL_USER: ${ENV_MYSQL_USER}
       MYSQL_PASSWORD: ${ENV_MYSQL_PASSWORD}
-      MYSQL_HOST: didoc_db    
+      MYSQL_HOST: didoc-db    
     volumes:
       - didoc_files:/var/www/html/volume
 
