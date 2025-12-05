@@ -3,3 +3,4 @@ composer.phar
 local.config.php
 .env
 .htaccess
+secrets

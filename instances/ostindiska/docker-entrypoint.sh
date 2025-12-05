@@ -3,14 +3,14 @@
 # Generate database configuration file
 echo "Creating database.ini in /var/www/html/config/ ..."
 rm -f /var/www/html/config/database.ini
-echo "user     = \"${MYSQL_USER}\"" > /var/www/html/config/database.ini
-echo "password = \"${MYSQL_PASSWORD}\"" >> /var/www/html/config/database.ini
-echo "dbname   = \"${MYSQL_DATABASE}\"" >> /var/www/html/config/database.ini
-echo "host     = \"${MYSQL_HOST}\"" >> /var/www/html/config/database.ini
+echo "user     = \"${MARIADB_USER}\"" > /var/www/html/config/database.ini
+echo "password = \"$(cat ${MARIADB_PASSWORD_FILE})\"" >> /var/www/html/config/database.ini
+echo "dbname   = \"${MARIADB_DATABASE}\"" >> /var/www/html/config/database.ini
+echo "host     = \"${MARIADB_HOST}\"" >> /var/www/html/config/database.ini
 echo "Done creating database.ini !"
 
-while ! nc -z "${MYSQL_HOST}" "3306"; do
-  echo "Waiting for database connection at ${MYSQL_HOST}:3306..."
+while ! nc -z "${MARIADB_HOST}" "3306"; do
+  echo "Waiting for database connection at ${MARIADB_HOST}:3306..."
   sleep 1
 done
 

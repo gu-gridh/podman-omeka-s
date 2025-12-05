@@ -28,7 +28,6 @@ intl
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 # Omeka S
-ARG OMEKA_S_VERSION
 WORKDIR /var/www/html
 RUN curl -L https://github.com/gu-gridh/omeka-s/archive/refs/heads/gridh_main_4.1.zip --output /var/www/latest_omeka_s.zip && \
     unzip -q /var/www/latest_omeka_s.zip -d /var/www/ && \

@@ -4,8 +4,6 @@ services:
     image: localhost/omeka-base:4.1.1
     build:
       context: ../../base
-      args:
-        OMEKA_S_VERSION: "4.1.1"
 
   solr:
     image: docker.io/library/solr:9.10.0
@@ -19,20 +17,23 @@ services:
       - ostindiska_index:/var/solr
 
   ostindiska-db:
-    image: docker.io/library/mariadb:latest
+    image: docker.io/library/mariadb:11.8.5
     container_name: ostindiska-db
     depends_on:
       - base
     environment:
-      MYSQL_DATABASE: ${ENV_MYSQL_DATABASE}
-      MYSQL_ROOT_USER: ${ENV_MYSQL_ROOT_USER}
-      MYSQL_ROOT_PASSWORD: ${ENV_MYSQL_ROOT_PASSWORD}
-      MYSQL_USER: ${ENV_MYSQL_USER}
-      MYSQL_PASSWORD: ${ENV_MYSQL_PASSWORD}
+      MARIADB_DATABASE: "ostindiska"
+      MARIADB_ROOT_USER: "root"
+      MARIADB_ROOT_PASSWORD_FILE: /run/secrets/ost-mysql-root-pw
+      MARIADB_USER: "ostindiska"
+      MARIADB_PASSWORD_FILE: /run/secrets/ost-mysql-pw
     volumes:
       - ostindiska_db:/var/lib/mysql
     ports:
       - ${ENV_DB_PORTS}
+    secrets:
+      - ost-mysql-root-pw
+      - ost-mysql-pw
 
   ostindiska-web:
     container_name: ostindiska-web
@@ -60,13 +61,21 @@ services:
       - ostindiska-db
       - solr
     environment:
-      MYSQL_DATABASE: ${ENV_MYSQL_DATABASE}
-      MYSQL_USER: ${ENV_MYSQL_USER}
-      MYSQL_PASSWORD: ${ENV_MYSQL_PASSWORD}
-      MYSQL_HOST: ostindiska-db
+      MARIADB_DATABASE: "ostindiska"
+      MARIADB_USER: "ostindiska"
+      MARIADB_PASSWORD_FILE: /run/secrets/ost-mysql-pw
+      MARIADB_HOST: "ostindiska-db"
     volumes:
       - ${ENV_VOLUME}
+    secrets:
+      - ost-mysql-pw
 
 volumes:
   ostindiska_db:
   ostindiska_index:
+
+secrets:
+  ost-mysql-root-pw:
+    external: true
+  ost-mysql-pw:
+    external: true
