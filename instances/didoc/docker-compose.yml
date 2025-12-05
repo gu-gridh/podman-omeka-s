@@ -53,7 +53,7 @@ services:
       MYSQL_PASSWORD: ${ENV_MYSQL_PASSWORD}
       MYSQL_HOST: didoc-db    
     volumes:
-      - didoc_files:/var/www/html/volume
+      - ${ENV_VOLUME}
 
 volumes:
   didoc_files:
