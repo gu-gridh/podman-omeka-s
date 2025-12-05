@@ -55,5 +55,4 @@ services:
       - ${ENV_VOLUME}
 
 volumes:
-  didoc_files:
   didoc_db:
