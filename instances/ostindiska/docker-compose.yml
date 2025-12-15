@@ -54,7 +54,6 @@ services:
         MODULE_Search_VERSION: "0.17.5"
         MODULE_Solr_VERSION: "0.20.2"
         MODULE_Taxonomy_VERSION: "0.9.2"
-        THEME_Foundation_VERSION: "1.5.3"
     ports:
       - ${ENV_PORTS}
     depends_on:
