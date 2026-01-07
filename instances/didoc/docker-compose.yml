@@ -4,22 +4,25 @@ services:
     image: localhost/omeka-base:4.1.1
     build:
       context: ../../base
-      args:
-        OMEKA_S_VERSION: "4.1.1"
 
   didoc-db:
-    image: docker.io/library/mariadb:latest
+    image: docker.io/library/mariadb:11.8.5
     container_name: didoc-db
     depends_on:
       - base
     environment:
-      MYSQL_DATABASE: ${ENV_MYSQL_DATABASE}
-      MYSQL_ROOT_USER: ${ENV_MYSQL_ROOT_USER}
-      MYSQL_ROOT_PASSWORD: ${ENV_MYSQL_ROOT_PASSWORD}
-      MYSQL_USER: ${ENV_MYSQL_USER}
-      MYSQL_PASSWORD: ${ENV_MYSQL_PASSWORD}
+      MARIADB_DATABASE: "didoc"
+      MARIADB_ROOT_USER: "root"
+      MARIADB_ROOT_PASSWORD_FILE: /run/secrets/didoc-mysql-root-pw
+      MARIADB_USER: "didoc"
+      MARIADB_PASSWORD_FILE: /run/secrets/didoc-mysql-pw
     volumes:
       - didoc_db:/var/lib/mysql
+    ports:
+      - ${ENV_DB_PORTS}
+    secrets:
+      - didoc-mysql-root-pw
+      - didoc-mysql-pw
 
   didoc-web:
     container_name: didoc-web
@@ -47,12 +50,20 @@ services:
     depends_on:
       - didoc-db
     environment:
-      MYSQL_DATABASE: ${ENV_MYSQL_DATABASE}
-      MYSQL_USER: ${ENV_MYSQL_USER}
-      MYSQL_PASSWORD: ${ENV_MYSQL_PASSWORD}
-      MYSQL_HOST: didoc-db    
+      MARIADB_DATABASE: "didoc"
+      MARIADB_USER: "didoc"
+      MARIADB_PASSWORD_FILE: /run/secrets/didoc-mysql-pw
+      MARIADB_HOST: "didoc-db"
     volumes:
       - ${ENV_VOLUME}
+    secrets:
+      - didoc-mysql-pw
 
 volumes:
   didoc_db:
+
+secrets:
+  didoc-mysql-root-pw:
+    external: true
+  didoc-mysql-pw:
+    external: true
