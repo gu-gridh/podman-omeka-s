@@ -7,13 +7,13 @@ Rootless podman version that works for several Omeka-S projects at the same time
   - Create 2 normal text files per project that contain the passwords as one line. One for the unpriviledged user and one for the root user. The names for these users are already defined in the docker file, so only the password needs to be provided.
   - Name these files according to the constraint: `<project>-mysql-pw` and `<project>-mysql-root-pw` and save them to base/secrets/ (they will then be ignored via gitignore).
   - Run `podman secret create <project>-mysql-root-pw base/secrets/<project>-mysql-root-pw` and `podman secret create <project>-mysql-pw base/secrets/<project>-mysql-pw` (replace <project> with the project name and adjust base/... to a full path if you don't run this command from the root of this repository)
-- Add a `.env` file per project (at /instance/project/) similar like this:
+- Add a `.env` file per project (at /instance/project/)
+  - Change the first part of the ports according to your wishes where you want your webserver port and database port from the container for that project should be exposed on your local system. And change the first part of the volume where you want the files to be stored. Your .env should look similar to this: 
 ```
 ENV_PORTS="8081:80"
 ENV_DB_PORTS="3301:3306"
 ENV_VOLUME="my/files:/var/www/html/files:Z,U"
 ```
-Change the first part of the ports according to your wishes where you want your webserver port and database port from the container for that project should be exposed on your local system. And change the first part of the volume where you want the files to be stored.
 - Add the config folder for each instance with the local.config.php file just like this one: https://github.com/omeka/omeka-s/blob/develop/config/local.config.php.dist
 - Build and run the container:
   - Run `podman-compose build` (use `--no-cache` if needed) for a project in it's instance folder
