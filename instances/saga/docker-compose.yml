@@ -4,54 +4,68 @@ services:
     image: localhost/omeka-base:4.1.1
     build:
       context: ../../base
-      args:
-        OMEKA_S_VERSION: ${ENV_OMEKA_S_VERSION}
-  saga_db:
-    image: docker.io/library/mariadb:latest
+  saga-db:
+    image: docker.io/library/mariadb:11.8.5
+    container_name: saga-db
     depends_on:
       - base
     environment:
-      MYSQL_DATABASE: ${ENV_MYSQL_DATABASE}
-      MYSQL_ROOT_USER: ${ENV_MYSQL_ROOT_USER}
-      MYSQL_ROOT_PASSWORD: ${ENV_MYSQL_ROOT_PASSWORD}
-      MYSQL_USER: ${ENV_MYSQL_USER}
-      MYSQL_PASSWORD: ${ENV_MYSQL_PASSWORD}
+      MARIADB_DATABASE: "saga"
+      MARIADB_ROOT_USER: "root"
+      MARIADB_ROOT_PASSWORD_FILE: /run/secrets/saga-mysql-root-pw
+      MARIADB_USER: "saga"
+      MARIADB_PASSWORD_FILE: /run/secrets/saga-mysql-pw
     volumes:
       - saga_db:/var/lib/mysql
-  saga_web:
+    ports:
+      - ${ENV_DB_PORTS}
+    secrets:
+      - saga-mysql-root-pw
+      - saga-mysql-pw  
+  saga-web:
+    container_name: saga-web
     build: 
       context: .
       args:
-        MODULE_AdvancedResourceTemplate_VERSION: ${MODULE_AdvancedResourceTemplate_VERSION}
-        MODULE_AnalyticsSnippet_VERSION: ${MODULE_AnalyticsSnippet_VERSION}
-        MODULE_AnalyticsSnippetPiwik_VERSION: ${MODULE_AnalyticsSnippetPiwik_VERSION}
-        MODULE_ApiInfo_VERSION: ${MODULE_ApiInfo_VERSION}
-        MODULE_BlockPlus_VERSION: ${MODULE_BlockPlus_VERSION}
-        MODULE_BulkEdit_VERSION: ${MODULE_BulkEdit_VERSION}
-        MODULE_CleanUrl_VERSION: ${MODULE_CleanUrl_VERSION}
-        MODULE_Common_VERSION: ${MODULE_Common_VERSION}
-        MODULE_CopyResources_VERSION: ${MODULE_CopyResources_VERSION}
-        MODULE_CSSEditor_VERSION: ${MODULE_CSSEditor_VERSION}
-        MODULE_CSVImport_VERSION: ${MODULE_CSVImport_VERSION}
-        MODULE_CustomVocab_VERSION: ${MODULE_CustomVocab_VERSION}
-        MODULE_ImageAnnotate_VERSION: ${MODULE_ImageAnnotate_VERSION}
-        MODULE_ItemCarouselBlock_VERSION: ${MODULE_ItemCarouselBlock_VERSION}        
-        MODULE_Mapping_VERSION: ${MODULE_Mapping_VERSION}
-        MODULE_NumericDataTypes_VERSION: ${MODULE_NumericDataTypes_VERSION}
-        MODULE_Timeline_VERSION: ${MODULE_Timeline_VERSION}
-        THEME_Freedom_VERSION: ${THEME_Freedom_VERSION}
+        MODULE_AdvancedResourceTemplate_VERSION: "3.4.45"
+        MODULE_AnalyticsSnippet_VERSION: "3.4.5"
+        MODULE_AnalyticsSnippetPiwik_VERSION: "3.4.8"
+        MODULE_ApiInfo_VERSION: "3.4.12"
+        MODULE_BlockPlus_VERSION: "3.4.42"
+        MODULE_BulkEdit_VERSION: "3.4.37"
+        MODULE_CleanUrl_VERSION: "3.17.10"
+        MODULE_Common_VERSION: "3.4.72"
+        MODULE_CopyResources_VERSION: "1.0.1"
+        MODULE_CSSEditor_VERSION: "1.3.1"
+        MODULE_CSVImport_VERSION: "2.6.2"
+        MODULE_CustomVocab_VERSION: "2.0.2"
+        MODULE_FacetedBrowse_VERSION: "1.8.0"
+        MODULE_ImageAnnotate_VERSION: "1.1.0"
+        MODULE_ItemCarouselBlock_VERSION: "1.4.1"
+        MODULE_Mapping_VERSION: "2.2.0"
+        MODULE_NumericDataTypes_VERSION: "1.13.0"
+        MODULE_Timeline_VERSION: "3.4.27"
+        THEME_Freedom_VERSION: "1.0.7"
     ports:
       - ${ENV_PORTS}
     depends_on:
-      - saga_db
+      - saga-db
     environment:
-      MYSQL_DATABASE: ${ENV_MYSQL_DATABASE}
-      MYSQL_USER: ${ENV_MYSQL_USER}
-      MYSQL_PASSWORD: ${ENV_MYSQL_PASSWORD}
-      MYSQL_HOST: saga_db    
+      MARIADB_DATABASE: "saga"
+      MARIADB_USER: "saga"
+      MARIADB_PASSWORD_FILE: /run/secrets/saga-mysql-pw
+      MARIADB_HOST: "saga-db"
     volumes:
-      - saga_files:/var/www/html/volume
+      - ${ENV_VOLUME}
+    secrets:
+      - saga-mysql-pw
 
 volumes:
-  saga_files:
   saga_db:
+  saga_files:
+
+secrets:
+  saga-mysql-root-pw:
+    external: true
+  saga-mysql-pw:
+    external: true
