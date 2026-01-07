@@ -23,8 +23,8 @@ ARG MODULE_Timeline_VERSION
 ARG THEME_Freedom_VERSION
 
 RUN /usr/local/bin/build_modules_themes.sh modules omeka-s-modules CopyResources ${MODULE_CopyResources_VERSION} - \
-/usr/local/bin/build_modules_themes.sh modules omeka-s-modules CSSEditor ${MODULE_CSSEditor_VERSION} - \
-/usr/local/bin/build_modules_themes.sh modules omeka-s-modules CustomVocab ${MODULE_CustomVocab_VERSION} - \
+&& /usr/local/bin/build_modules_themes.sh modules omeka-s-modules CSSEditor ${MODULE_CSSEditor_VERSION} - \
+&& /usr/local/bin/build_modules_themes.sh modules omeka-s-modules CustomVocab ${MODULE_CustomVocab_VERSION} - \
 && /usr/local/bin/build_modules_themes.sh modules omeka-s-modules CSVImport ${MODULE_CSVImport_VERSION} - \
 && /usr/local/bin/build_modules_themes.sh modules omeka-s-modules FacetedBrowse ${MODULE_FacetedBrowse_VERSION} - \
 && /usr/local/bin/build_modules_themes.sh modules omeka-s-modules ImageAnnotate ${MODULE_ImageAnnotate_VERSION} - \

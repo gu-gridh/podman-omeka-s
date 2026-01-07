@@ -41,8 +41,6 @@ WORKDIR /var/www/html/
 COPY config/ /var/www/html/config/
 COPY .htaccess /var/www/html/.htaccess
 
-RUN chown -R www-data:www-data /var/www/html/files
-
 COPY docker-entrypoint.sh /
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
