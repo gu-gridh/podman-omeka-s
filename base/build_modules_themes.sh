@@ -22,7 +22,7 @@ elif [[ "$repo" == "omeka-s-themes" ]]; then
 elif [[ "$name" == "CopyResources" || "$name" == "Datavis" ]]; then
   url="https://github.com/omeka-s-modules/${name}/archive/refs/tags/v${version}.zip"
 elif [[ "$repo" == "gu-gridh" ]]; then
-  url="https://github.com/${repo}/${name}/archive/refs/heads/gridh.zip"
+  url="https://github.com/${repo}/${name}/archive/refs/heads/${version}.zip"
 else
   url="https://github.com/omeka-s-modules/${name}/releases/download/v${version}/${name}-${version}.zip"
 fi
@@ -39,7 +39,7 @@ elif [[ "$repo" == "omeka-s-themes" || "$name" == "CopyResources" || "$name" == 
   mv "${path}/${name}-${version}" "${path}/${name}"
 elif [[ "$repo" == "didoc" ]]; then
   mv "${path}/thanksroy-didoc" "${path}/${name}"
-elif [[ "$repo" == "gu-gridh" ]]; then
+elif [[ "$repo" == "gu-gridh" && "$version" == "gridh" ]]; then
   mv "${path}/${name}-gridh" "${path}/gridh"
 fi
 

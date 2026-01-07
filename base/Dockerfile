@@ -14,6 +14,7 @@ libjpeg-dev \
 libtiff-dev \
 libxml2-dev \
 libicu-dev \
+libzip-dev \
 nodejs \
 npm
 
@@ -22,7 +23,9 @@ RUN docker-php-ext-install \
 # omeka s core dependencies
 pdo pdo_mysql xml \
 # for NumericDataTypes which we use in all versions
-intl
+intl \
+# needed for timeline
+zip
 
 # Composer for modules
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
