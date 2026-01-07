@@ -1,8 +1,6 @@
 FROM localhost/omeka-base:4.1.1
 
-RUN mkdir -p /var/www/html/volume/files/ && \
-    rm -Rf /var/www/html/files/ && \
-    ln -s /var/www/html/volume/files/ /var/www/html/files
+RUN mkdir -p /var/www/html/files
 
 ARG MODULE_AdvancedResourceTemplate_VERSION
 ARG MODULE_AnalyticsSnippet_VERSION
@@ -45,8 +43,7 @@ RUN /usr/local/bin/build_modules_themes.sh modules omeka-s-modules CopyResources
 && /usr/local/bin/build_modules_themes.sh themes gu-gridh freedom saga -
 
 COPY config/ /var/www/html/config/
-
-RUN chown -R www-data:www-data /var/www/html/files
+COPY .htaccess /var/www/html/.htaccess
 
 COPY docker-entrypoint.sh /
 

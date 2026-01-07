@@ -62,7 +62,6 @@ services:
 
 volumes:
   saga_db:
-  saga_files:
 
 secrets:
   saga-mysql-root-pw:
