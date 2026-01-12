@@ -13,8 +13,8 @@ ARG MODULE_Datavis_VERSION
 ARG MODULE_FacetedBrowse_VERSION
 ARG MODULE_Internationalisation_VERSION
 ARG MODULE_NumericDataTypes_VERSION
-ARG MODULE_Search_VERSION
-ARG MODULE_Solr_VERSION
+# ARG MODULE_Search_VERSION
+# ARG MODULE_Solr_VERSION
 ARG MODULE_Taxonomy_VERSION
 
 RUN /usr/local/bin/build_modules_themes.sh modules omeka-s-modules CustomVocab ${MODULE_CustomVocab_VERSION} - \
@@ -28,8 +28,8 @@ RUN /usr/local/bin/build_modules_themes.sh modules omeka-s-modules CustomVocab $
 && /usr/local/bin/build_modules_themes.sh modules Daniel-KM Internationalisation ${MODULE_Internationalisation_VERSION} composer \
 && /usr/local/bin/build_modules_themes.sh modules Daniel-KM Common ${MODULE_Common_VERSION} composer \
 && /usr/local/bin/build_modules_themes.sh modules Daniel-KM BlockPlus ${MODULE_BlockPlus_VERSION} composer \
-&& /usr/local/bin/build_modules_themes.sh modules BibLibre Search ${MODULE_Search_VERSION} - \
-&& /usr/local/bin/build_modules_themes.sh modules BibLibre Solr ${MODULE_Solr_VERSION} - \
+# && /usr/local/bin/build_modules_themes.sh modules BibLibre Search ${MODULE_Search_VERSION} - \
+# && /usr/local/bin/build_modules_themes.sh modules BibLibre Solr ${MODULE_Solr_VERSION} - \
 && /usr/local/bin/build_modules_themes.sh modules BibLibre Taxonomy ${MODULE_Taxonomy_VERSION} - \
 && /usr/local/bin/build_modules_themes.sh themes gu-gridh Omeka-S-default-gridh gridh -
 
