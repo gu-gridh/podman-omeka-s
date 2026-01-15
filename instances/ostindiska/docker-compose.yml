@@ -23,6 +23,8 @@ services:
     secrets:
       - ost-mysql-root-pw
       - ost-mysql-pw
+    networks:
+      - ostindiska-net
 
   ostindiska-web:
     container_name: ostindiska-web
@@ -56,6 +58,8 @@ services:
       - ${ENV_VOLUME}
     secrets:
       - ost-mysql-pw
+    networks:
+      - ostindiska-net
 
 volumes:
   ostindiska_db:
@@ -65,3 +69,6 @@ secrets:
     external: true
   ost-mysql-pw:
     external: true
+
+networks:
+  ostindiska-net: {}
