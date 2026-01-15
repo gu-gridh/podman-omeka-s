@@ -4,6 +4,7 @@ RUN mkdir -p /var/www/html/files/
 
 ARG MODULE_AdvancedResourceTemplate_VERSION
 ARG MODULE_AnalyticsSnippet_VERSION
+ARG MODULE_AnnotationProfiles_VERSION
 ARG MODULE_BlockPlus_VERSION
 ARG MODULE_CleanUrl_VERSION
 ARG MODULE_Common_VERSION
@@ -14,8 +15,6 @@ ARG MODULE_Datavis_VERSION
 ARG MODULE_FacetedBrowse_VERSION
 ARG MODULE_Internationalisation_VERSION
 ARG MODULE_NumericDataTypes_VERSION
-# ARG MODULE_Search_VERSION
-# ARG MODULE_Solr_VERSION
 ARG MODULE_Taxonomy_VERSION
 
 RUN /usr/local/bin/build_modules_themes.sh modules omeka-s-modules CustomVocab ${MODULE_CustomVocab_VERSION} - \
@@ -30,9 +29,8 @@ RUN /usr/local/bin/build_modules_themes.sh modules omeka-s-modules CustomVocab $
 && /usr/local/bin/build_modules_themes.sh modules Daniel-KM CleanUrl ${MODULE_CleanUrl_VERSION} composer \
 && /usr/local/bin/build_modules_themes.sh modules Daniel-KM Common ${MODULE_Common_VERSION} composer \
 && /usr/local/bin/build_modules_themes.sh modules Daniel-KM BlockPlus ${MODULE_BlockPlus_VERSION} composer \
-# && /usr/local/bin/build_modules_themes.sh modules BibLibre Search ${MODULE_Search_VERSION} - \
-# && /usr/local/bin/build_modules_themes.sh modules BibLibre Solr ${MODULE_Solr_VERSION} - \
 && /usr/local/bin/build_modules_themes.sh modules BibLibre Taxonomy ${MODULE_Taxonomy_VERSION} - \
+&& /usr/local/bin/build_modules_themes.sh modules gu-gridh Omeka-S-module-AnnotationProfiles main - \
 && /usr/local/bin/build_modules_themes.sh themes gu-gridh Omeka-S-default-gridh ostindiska -
 
 WORKDIR /var/www/html/themes/gridh
