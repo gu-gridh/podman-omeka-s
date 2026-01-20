@@ -43,6 +43,7 @@ RUN /usr/local/bin/build_modules_themes.sh modules omeka-s-modules CopyResources
 && /usr/local/bin/build_modules_themes.sh themes gu-gridh freedom saga -
 
 COPY config/ /var/www/html/config/
+RUN chown www-data:www-data /var/www/html/config/cleanurl.config.php
 COPY .htaccess /var/www/html/.htaccess
 
 COPY docker-entrypoint.sh /
