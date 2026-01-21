@@ -3,6 +3,7 @@ FROM localhost/omeka-base:4.1.1
 RUN mkdir -p /var/www/html/files/
 
 ARG MODULE_AdvancedResourceTemplate_VERSION
+ARG MODULE_AdvancedSearch_VERSION
 ARG MODULE_AnalyticsSnippet_VERSION
 ARG MODULE_AnnotationProfiles_VERSION
 ARG MODULE_BlockPlus_VERSION
@@ -15,6 +16,7 @@ ARG MODULE_Datavis_VERSION
 ARG MODULE_FacetedBrowse_VERSION
 ARG MODULE_Internationalisation_VERSION
 ARG MODULE_NumericDataTypes_VERSION
+ARG MODULE_Reference_VERSION
 ARG MODULE_Taxonomy_VERSION
 
 RUN /usr/local/bin/build_modules_themes.sh modules omeka-s-modules CustomVocab ${MODULE_CustomVocab_VERSION} - \
@@ -24,6 +26,8 @@ RUN /usr/local/bin/build_modules_themes.sh modules omeka-s-modules CustomVocab $
 && /usr/local/bin/build_modules_themes.sh modules omeka-s-modules FacetedBrowse ${MODULE_FacetedBrowse_VERSION} - \
 && /usr/local/bin/build_modules_themes.sh modules omeka-s-modules NumericDataTypes ${MODULE_NumericDataTypes_VERSION} - \
 && /usr/local/bin/build_modules_themes.sh modules Daniel-KM AdvancedResourceTemplate ${MODULE_AdvancedResourceTemplate_VERSION} composer \
+&& /usr/local/bin/build_modules_themes.sh modules Daniel-KM AdvancedSearch ${MODULE_AdvancedSearch_VERSION} composer \
+&& /usr/local/bin/build_modules_themes.sh modules Daniel-KM Reference ${MODULE_Reference_VERSION} composer \
 && /usr/local/bin/build_modules_themes.sh modules Daniel-KM AnalyticsSnippet ${MODULE_AnalyticsSnippet_VERSION} composer \
 && /usr/local/bin/build_modules_themes.sh modules Daniel-KM Internationalisation ${MODULE_Internationalisation_VERSION} composer \
 && /usr/local/bin/build_modules_themes.sh modules Daniel-KM CleanUrl ${MODULE_CleanUrl_VERSION} composer \

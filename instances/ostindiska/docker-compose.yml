@@ -32,6 +32,7 @@ services:
       context: .
       args:
         MODULE_AdvancedResourceTemplate_VERSION: "3.4.45"
+        MODULE_AdvancedSearch_VERSION: "3.4.54"
         MODULE_AnalyticsSnippet_VERSION: "3.4.5"
         MODULE_AnnotationProfiles_VERSION: "0.1.0"
         MODULE_BlockPlus_VERSION: "3.4.42"
@@ -44,6 +45,7 @@ services:
         MODULE_FacetedBrowse_VERSION: "1.8.0"
         MODULE_Internationalisation_VERSION: "3.4.17"
         MODULE_NumericDataTypes_VERSION: "1.13.0"
+        MODULE_Reference_VERSION: "3.4.56"
         MODULE_Taxonomy_VERSION: "0.9.2"
     ports:
       - ${ENV_PORTS}
