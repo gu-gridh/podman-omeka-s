@@ -47,6 +47,7 @@ services:
         MODULE_NumericDataTypes_VERSION: "1.13.0"
         MODULE_Reference_VERSION: "3.4.56"
         MODULE_Taxonomy_VERSION: "0.9.2"
+        MODULE_Thesaurus_VERSION: "3.4.22"
     ports:
       - ${ENV_PORTS}
     depends_on:
