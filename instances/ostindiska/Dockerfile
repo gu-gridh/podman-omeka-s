@@ -13,18 +13,15 @@ ARG MODULE_CSSEditor_VERSION
 ARG MODULE_CSVImport_VERSION
 ARG MODULE_CustomVocab_VERSION
 ARG MODULE_Datavis_VERSION
-ARG MODULE_FacetedBrowse_VERSION
 ARG MODULE_Internationalisation_VERSION
 ARG MODULE_NumericDataTypes_VERSION
 ARG MODULE_Reference_VERSION
-ARG MODULE_Taxonomy_VERSION
 ARG MODULE_Thesaurus_VERSION
 
 RUN /usr/local/bin/build_modules_themes.sh modules omeka-s-modules CustomVocab ${MODULE_CustomVocab_VERSION} - \
 && /usr/local/bin/build_modules_themes.sh modules omeka-s-modules CSVImport ${MODULE_CSVImport_VERSION} - \
 && /usr/local/bin/build_modules_themes.sh modules omeka-s-modules CSSEditor ${MODULE_CSSEditor_VERSION} - \
 && /usr/local/bin/build_modules_themes.sh modules omeka-s-modules Datavis ${MODULE_Datavis_VERSION} - \
-&& /usr/local/bin/build_modules_themes.sh modules omeka-s-modules FacetedBrowse ${MODULE_FacetedBrowse_VERSION} - \
 && /usr/local/bin/build_modules_themes.sh modules omeka-s-modules NumericDataTypes ${MODULE_NumericDataTypes_VERSION} - \
 && /usr/local/bin/build_modules_themes.sh modules Daniel-KM AdvancedResourceTemplate ${MODULE_AdvancedResourceTemplate_VERSION} composer \
 && /usr/local/bin/build_modules_themes.sh modules Daniel-KM AdvancedSearch ${MODULE_AdvancedSearch_VERSION} composer \
@@ -35,7 +32,6 @@ RUN /usr/local/bin/build_modules_themes.sh modules omeka-s-modules CustomVocab $
 && /usr/local/bin/build_modules_themes.sh modules Daniel-KM Common ${MODULE_Common_VERSION} composer \
 && /usr/local/bin/build_modules_themes.sh modules Daniel-KM BlockPlus ${MODULE_BlockPlus_VERSION} composer \
 && /usr/local/bin/build_modules_themes.sh modules Daniel-KM Thesaurus ${MODULE_Thesaurus_VERSION} composer \
-&& /usr/local/bin/build_modules_themes.sh modules BibLibre Taxonomy ${MODULE_Taxonomy_VERSION} - \
 && /usr/local/bin/build_modules_themes.sh modules gu-gridh Omeka-S-module-AnnotationProfiles main - \
 && /usr/local/bin/build_modules_themes.sh themes gu-gridh Omeka-S-default-gridh ostindiska -
 
