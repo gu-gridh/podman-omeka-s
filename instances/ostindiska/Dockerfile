@@ -40,6 +40,7 @@ RUN npm install
 
 WORKDIR /var/www/html/
 
+COPY favicon.ico /var/www/html/
 COPY config/ /var/www/html/config/
 RUN chown www-data:www-data /var/www/html/config/cleanurl.config.php
 COPY .htaccess /var/www/html/.htaccess
