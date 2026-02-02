@@ -41,10 +41,12 @@ elif [[ "$repo" == "didoc" ]]; then
   mv "${path}/thanksroy-didoc" "${path}/${name}"
 elif [[ "$repo" == "gu-gridh" && "$version" == "gridh" ]]; then
   mv "${path}/${name}-gridh" "${path}/gridh"
-elif [[ "$repo" == "gu-gridh" && "$version" == "ostindiska" ]]; then
-  mv "${path}/${name}-ostindiska" "${path}/gridh"
+elif [[ "$repo" == "gu-gridh" && "$name" == "Omeka-S-module-Datavis" ]]; then
+  mv "${path}/${name}-ostindiska" "${path}/Datavis"
 elif [[ "$repo" == "gu-gridh" && "$name" == "Omeka-S-module-AnnotationProfiles" ]]; then
   mv "${path}/${name}-main" "${path}/AnnotationProfiles"
+elif [[ "$repo" == "gu-gridh" && "$version" == "ostindiska" ]]; then
+  mv "${path}/${name}-ostindiska" "${path}/gridh"
 fi
 
 if [[ "$need_comp" == "composer" ]]; then
