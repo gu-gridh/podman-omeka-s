@@ -21,35 +21,47 @@ services:
       - ${ENV_DB_PORTS}
     secrets:
       - saga-mysql-root-pw
-      - saga-mysql-pw  
+      - saga-mysql-pw
+  saga-solr:
+    image: docker.io/library/solr:9.10.0
+    container_name: saga-solr
+    command: ["solr-precreate", "omeka"]
+    security_opt:
+      - no-new-privileges:true
+    environment:
+      SOLR_OPTS: -Dsolr.jetty.host=0.0.0.0
+    volumes:
+      - saga_index:/var/solr
   saga-web:
     container_name: saga-web
     build: 
       context: .
       args:
-        MODULE_AdvancedResourceTemplate_VERSION: "3.4.45"
+        MODULE_AdvancedResourceTemplate_VERSION: "3.4.49"
+        MODULE_AdvancedSearch_VERSION: "3.4.56"
         MODULE_AnalyticsSnippet_VERSION: "3.4.5"
         MODULE_AnalyticsSnippetPiwik_VERSION: "3.4.8"
         MODULE_ApiInfo_VERSION: "3.4.12"
         MODULE_BlockPlus_VERSION: "3.4.42"
         MODULE_BulkEdit_VERSION: "3.4.37"
         MODULE_CleanUrl_VERSION: "3.17.10"
-        MODULE_Common_VERSION: "3.4.74"
+        MODULE_Common_VERSION: "3.4.76"
         MODULE_CopyResources_VERSION: "1.0.1"
         MODULE_CSSEditor_VERSION: "1.3.1"
         MODULE_CSVImport_VERSION: "2.6.2"
         MODULE_CustomVocab_VERSION: "2.0.2"
-        MODULE_FacetedBrowse_VERSION: "1.8.0"
         MODULE_ImageAnnotate_VERSION: "1.1.0"
         MODULE_ItemCarouselBlock_VERSION: "1.4.1"
         MODULE_Mapping_VERSION: "2.2.0"
         MODULE_NumericDataTypes_VERSION: "1.13.0"
+        MODULE_SearchSolr_VERSION: "3.5.63"
         MODULE_Timeline_VERSION: "3.4.27"
         THEME_Freedom_VERSION: "1.0.7"
     ports:
       - ${ENV_PORTS}
     depends_on:
       - saga-db
+      - saga-solr
     environment:
       MARIADB_DATABASE: "saga"
       MARIADB_USER: "saga"
@@ -62,6 +74,7 @@ services:
 
 volumes:
   saga_db:
+  saga_index:
 
 secrets:
   saga-mysql-root-pw:
