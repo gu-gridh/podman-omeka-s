@@ -52,6 +52,7 @@ services:
         MODULE_CustomVocab_VERSION: "2.0.2"
         MODULE_ImageAnnotate_VERSION: "1.1.0"
         MODULE_ItemCarouselBlock_VERSION: "1.4.1"
+        MODULE_ItemSetParty_VERSION: "0.2.2"
         MODULE_Mapping_VERSION: "2.2.0"
         MODULE_NumericDataTypes_VERSION: "1.13.0"
         MODULE_SearchSolr_VERSION: "3.5.63"

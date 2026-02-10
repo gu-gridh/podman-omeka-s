@@ -17,6 +17,7 @@ ARG MODULE_CSVImport_VERSION
 ARG MODULE_CustomVocab_VERSION
 ARG MODULE_ImageAnnotate_VERSION
 ARG MODULE_ItemCarouselBlock_VERSION
+ARG MODULE_ItemSetParty_VERSION
 ARG MODULE_Mapping_VERSION
 ARG MODULE_NumericDataTypes_VERSION
 ARG MODULE_SearchSolr_VERSION
@@ -31,6 +32,7 @@ RUN /usr/local/bin/build_modules_themes.sh modules omeka-s-modules CopyResources
 && /usr/local/bin/build_modules_themes.sh modules omeka-s-modules ItemCarouselBlock ${MODULE_ItemCarouselBlock_VERSION} - \
 && /usr/local/bin/build_modules_themes.sh modules omeka-s-modules Mapping ${MODULE_Mapping_VERSION} - \
 && /usr/local/bin/build_modules_themes.sh modules omeka-s-modules NumericDataTypes ${MODULE_NumericDataTypes_VERSION} - \
+&& /usr/local/bin/build_modules_themes.sh modules BibLibre ItemSetParty ${MODULE_ItemSetParty_VERSION} - \
 && /usr/local/bin/build_modules_themes.sh modules Daniel-KM AdvancedResourceTemplate ${MODULE_AdvancedResourceTemplate_VERSION} composer \
 && /usr/local/bin/build_modules_themes.sh modules Daniel-KM AdvancedSearch ${MODULE_AdvancedSearch_VERSION} composer \
 && /usr/local/bin/build_modules_themes.sh modules Daniel-KM AnalyticsSnippet ${MODULE_AnalyticsSnippet_VERSION} composer \
