@@ -46,6 +46,11 @@ RUN /usr/local/bin/build_modules_themes.sh modules omeka-s-modules CopyResources
 && /usr/local/bin/build_modules_themes.sh modules Daniel-KM Timeline ${MODULE_Timeline_VERSION} composer \
 && /usr/local/bin/build_modules_themes.sh themes gu-gridh freedom saga -
 
+WORKDIR /var/www/html/themes/freedom
+RUN npm install
+
+WORKDIR /var/www/html/
+
 COPY config/ /var/www/html/config/
 RUN chown www-data:www-data /var/www/html/config/cleanurl.config.php
 COPY .htaccess /var/www/html/.htaccess
