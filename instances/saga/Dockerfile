@@ -15,6 +15,7 @@ ARG MODULE_CopyResources_VERSION
 ARG MODULE_CSSEditor_VERSION
 ARG MODULE_CSVImport_VERSION
 ARG MODULE_CustomVocab_VERSION
+ARG MODULE_DataTypeRdf_VERSION
 ARG MODULE_ImageAnnotate_VERSION
 ARG MODULE_ItemCarouselBlock_VERSION
 ARG MODULE_ItemSetParty_VERSION
@@ -42,6 +43,7 @@ RUN /usr/local/bin/build_modules_themes.sh modules omeka-s-modules CopyResources
 && /usr/local/bin/build_modules_themes.sh modules Daniel-KM BlockPlus ${MODULE_BlockPlus_VERSION} composer \
 && /usr/local/bin/build_modules_themes.sh modules Daniel-KM BulkEdit ${MODULE_BulkEdit_VERSION} composer \
 && /usr/local/bin/build_modules_themes.sh modules Daniel-KM CleanUrl ${MODULE_CleanUrl_VERSION} composer \
+&& /usr/local/bin/build_modules_themes.sh modules Daniel-KM DataTypeRdf ${MODULE_DataTypeRdf_VERSION} composer \
 && /usr/local/bin/build_modules_themes.sh modules Daniel-KM SearchSolr ${MODULE_SearchSolr_VERSION} composer \
 && /usr/local/bin/build_modules_themes.sh modules Daniel-KM Timeline ${MODULE_Timeline_VERSION} composer \
 && /usr/local/bin/build_modules_themes.sh themes gu-gridh freedom saga -

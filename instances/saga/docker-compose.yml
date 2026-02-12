@@ -50,6 +50,7 @@ services:
         MODULE_CSSEditor_VERSION: "1.3.1"
         MODULE_CSVImport_VERSION: "2.6.2"
         MODULE_CustomVocab_VERSION: "2.0.2"
+        MODULE_DataTypeRdf_VERSION: "3.4.14"
         MODULE_ImageAnnotate_VERSION: "1.1.0"
         MODULE_ItemCarouselBlock_VERSION: "1.4.1"
         MODULE_ItemSetParty_VERSION: "0.2.2"
