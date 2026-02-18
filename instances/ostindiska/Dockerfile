@@ -42,6 +42,7 @@ RUN npm install
 WORKDIR /var/www/html/
 
 COPY favicon.ico /var/www/html/
+COPY LanguageList.php /var/www/html/modules/Internationalisation/src/View/Helper/
 COPY config/ /var/www/html/config/
 RUN chown www-data:www-data /var/www/html/config/cleanurl.config.php
 COPY .htaccess /var/www/html/.htaccess
