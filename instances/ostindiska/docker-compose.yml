@@ -32,7 +32,7 @@ services:
       context: .
       args:
         MODULE_AdvancedResourceTemplate_VERSION: "3.4.49"
-        MODULE_AdvancedSearch_VERSION: "3.4.55"
+        MODULE_AdvancedSearch_VERSION: "3.4.57"
         MODULE_AnalyticsSnippet_VERSION: "3.4.5"
         MODULE_AnnotationProfiles_VERSION: "0.1.0"
         MODULE_BlockPlus_VERSION: "3.4.43"
