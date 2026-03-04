@@ -1,15 +1,8 @@
 services:
 
-  base:
-    image: localhost/omeka-base:4.1.1
-    build:
-      context: ../../base
-
   ostindiska-db:
     image: docker.io/library/mariadb:11.8.5
     container_name: ostindiska-db
-    depends_on:
-      - base
     environment:
       MARIADB_DATABASE: "ostindiska"
       MARIADB_ROOT_USER: "root"
