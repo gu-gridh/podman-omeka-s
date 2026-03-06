@@ -16,6 +16,7 @@ ARG MODULE_CSSEditor_VERSION
 ARG MODULE_CSVImport_VERSION
 ARG MODULE_CustomVocab_VERSION
 ARG MODULE_DataTypeRdf_VERSION
+ARG MODULE_Datavis_VERSION
 ARG MODULE_ImageAnnotate_VERSION
 ARG MODULE_ItemCarouselBlock_VERSION
 ARG MODULE_ItemSetParty_VERSION
@@ -29,6 +30,7 @@ RUN /usr/local/bin/build_modules_themes.sh modules omeka-s-modules CopyResources
 && /usr/local/bin/build_modules_themes.sh modules omeka-s-modules CSSEditor ${MODULE_CSSEditor_VERSION} - \
 && /usr/local/bin/build_modules_themes.sh modules omeka-s-modules CustomVocab ${MODULE_CustomVocab_VERSION} - \
 && /usr/local/bin/build_modules_themes.sh modules omeka-s-modules CSVImport ${MODULE_CSVImport_VERSION} - \
+&& /usr/local/bin/build_modules_themes.sh modules omeka-s-modules Datavis ${MODULE_Datavis_VERSION} - \
 && /usr/local/bin/build_modules_themes.sh modules omeka-s-modules ImageAnnotate ${MODULE_ImageAnnotate_VERSION} - \
 && /usr/local/bin/build_modules_themes.sh modules omeka-s-modules ItemCarouselBlock ${MODULE_ItemCarouselBlock_VERSION} - \
 && /usr/local/bin/build_modules_themes.sh modules omeka-s-modules Mapping ${MODULE_Mapping_VERSION} - \
@@ -54,6 +56,7 @@ RUN npm install
 WORKDIR /var/www/html/
 
 COPY config/ /var/www/html/config/
+COPY SearchingForm.php /var/www/html/modules/AdvancedSearch/src/Site/BlockLayout/
 RUN chown www-data:www-data /var/www/html/config/cleanurl.config.php
 COPY .htaccess /var/www/html/.htaccess
 
