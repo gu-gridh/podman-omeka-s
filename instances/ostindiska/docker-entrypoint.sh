@@ -4,7 +4,7 @@
 echo "Creating database.ini in /var/www/html/config/ ..."
 rm -f /var/www/html/config/database.ini
 echo "user     = \"${MARIADB_USER}\"" > /var/www/html/config/database.ini
-echo "password = \"$(cat ${MARIADB_PASSWORD_FILE})\"" >> /var/www/html/config/database.ini
+echo "password = \"${MARIADB_PASSWORD}\"" >> /var/www/html/config/database.ini
 echo "dbname   = \"${MARIADB_DATABASE}\"" >> /var/www/html/config/database.ini
 echo "host     = \"${MARIADB_HOST}\"" >> /var/www/html/config/database.ini
 echo "Done creating database.ini !"
