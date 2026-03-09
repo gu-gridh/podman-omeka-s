@@ -1,5 +1,5 @@
 # with php version 8.3, 8.4 is not supported yet
-FROM php:8.3-apache
+FROM docker.io/library/php:8.3-apache
 
 # System deps
 RUN apt-get update && apt-get install -y \
