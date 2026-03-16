@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # fix file permissions
-chmod 775 /var/www/html/files /var/www/html/config
+chmod -R 775 /var/www/html/files /var/www/html/config
 
 # Generate database configuration file
 echo "Creating database.ini in /var/www/html/config/ ..."
