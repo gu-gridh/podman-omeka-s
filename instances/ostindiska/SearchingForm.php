@@ -152,6 +152,7 @@ class SearchingForm extends AbstractBlockLayout implements TemplateableBlockLayo
             $request = $formAdapter->cleanRequest($request);
             $isEmptyRequest = $formAdapter->isEmptyRequest($request);
             if ($isEmptyRequest) {
+                // Fix problem with pagination when doing an empty search
                 $keep = array_intersect_key($request, array_flip(['page', 'sort', 'per_page', 'limit', 'offset', 'sort_by', 'sort_order']));
                 $request = $query + $keep;
             } else {

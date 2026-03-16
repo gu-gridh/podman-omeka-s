@@ -43,8 +43,6 @@ COPY --chmod=755 build_modules_themes.sh /usr/local/bin/build_modules_themes.sh
 RUN npm install
 RUN npx gulp init
 
-# Apache permissions
-RUN chown -R www-data:www-data /var/www/html
 ENV APACHE_DOCUMENT_ROOT=/var/www/html
 
 RUN a2enmod rewrite
@@ -97,7 +95,6 @@ COPY favicon.ico /var/www/html/
 COPY LanguageList.php /var/www/html/modules/Internationalisation/src/View/Helper/
 COPY SearchingForm.php /var/www/html/modules/AdvancedSearch/src/Site/BlockLayout/
 COPY config/ /var/www/html/config/
-RUN chown www-data:www-data /var/www/html/config/cleanurl.config.php
 COPY .htaccess /var/www/html/.htaccess
 
 COPY docker-entrypoint.sh /
