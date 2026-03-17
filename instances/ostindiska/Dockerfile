@@ -99,6 +99,8 @@ COPY .htaccess /var/www/html/.htaccess
 COPY apache/ports.conf /etc/apache2/ports.conf
 COPY apache/000-default.conf /etc/apache2/sites-available/000-default.conf
 
+EXPOSE 8080
+
 COPY docker-entrypoint.sh /
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
