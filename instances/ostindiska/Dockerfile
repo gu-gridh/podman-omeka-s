@@ -96,6 +96,8 @@ COPY LanguageList.php /var/www/html/modules/Internationalisation/src/View/Helper
 COPY SearchingForm.php /var/www/html/modules/AdvancedSearch/src/Site/BlockLayout/
 COPY config/ /var/www/html/config/
 COPY .htaccess /var/www/html/.htaccess
+COPY apache/ports.conf /etc/apache2/ports.conf
+COPY apache/000-default.conf /etc/apache2/sites-available/000-default.conf
 
 COPY docker-entrypoint.sh /
 
