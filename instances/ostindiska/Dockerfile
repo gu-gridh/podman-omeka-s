@@ -66,6 +66,7 @@ ARG MODULE_DataTypeRdf_VERSION
 ARG MODULE_Internationalisation_VERSION
 ARG MODULE_NumericDataTypes_VERSION
 ARG MODULE_Reference_VERSION
+ARG MODULE_SearchSolr_VERSION
 ARG MODULE_Thesaurus_VERSION
 
 RUN /usr/local/bin/build_modules_themes.sh modules omeka-s-modules CustomVocab ${MODULE_CustomVocab_VERSION} - \
@@ -82,6 +83,7 @@ RUN /usr/local/bin/build_modules_themes.sh modules omeka-s-modules CustomVocab $
 && /usr/local/bin/build_modules_themes.sh modules Daniel-KM Common ${MODULE_Common_VERSION} composer \
 && /usr/local/bin/build_modules_themes.sh modules Daniel-KM DataTypeRdf ${MODULE_DataTypeRdf_VERSION} composer \
 && /usr/local/bin/build_modules_themes.sh modules Daniel-KM Thesaurus ${MODULE_Thesaurus_VERSION} composer \
+&& /usr/local/bin/build_modules_themes.sh modules Daniel-KM SearchSolr ${MODULE_SearchSolr_VERSION} composer \
 && /usr/local/bin/build_modules_themes.sh modules gu-gridh Omeka-S-module-AnnotationProfiles main - \
 && /usr/local/bin/build_modules_themes.sh modules gu-gridh Omeka-S-module-Datavis ostindiska - \
 && /usr/local/bin/build_modules_themes.sh themes gu-gridh Omeka-S-default-gridh ostindiska -
