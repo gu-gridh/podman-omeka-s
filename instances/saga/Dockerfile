@@ -21,9 +21,11 @@ ARG MODULE_ImageAnnotate_VERSION
 ARG MODULE_ItemCarouselBlock_VERSION
 ARG MODULE_ItemSetParty_VERSION
 ARG MODULE_Mapping_VERSION
+ARG MODULE_Menu_VERSION
 ARG MODULE_NumericDataTypes_VERSION
 ARG MODULE_SearchSolr_VERSION
 ARG MODULE_Timeline_VERSION
+ARG MODULE_Thesaurus_VERSION
 ARG THEME_Freedom_VERSION
 
 RUN /usr/local/bin/build_modules_themes.sh modules omeka-s-modules CopyResources ${MODULE_CopyResources_VERSION} - \
@@ -46,7 +48,9 @@ RUN /usr/local/bin/build_modules_themes.sh modules omeka-s-modules CopyResources
 && /usr/local/bin/build_modules_themes.sh modules Daniel-KM BulkEdit ${MODULE_BulkEdit_VERSION} composer \
 && /usr/local/bin/build_modules_themes.sh modules Daniel-KM CleanUrl ${MODULE_CleanUrl_VERSION} composer \
 && /usr/local/bin/build_modules_themes.sh modules Daniel-KM DataTypeRdf ${MODULE_DataTypeRdf_VERSION} composer \
+&& /usr/local/bin/build_modules_themes.sh modules Daniel-KM Menu ${MODULE_Menu_VERSION} composer \
 && /usr/local/bin/build_modules_themes.sh modules Daniel-KM SearchSolr ${MODULE_SearchSolr_VERSION} composer \
+&& /usr/local/bin/build_modules_themes.sh modules Daniel-KM Thesaurus ${MODULE_Thesaurus_VERSION} composer \
 && /usr/local/bin/build_modules_themes.sh modules Daniel-KM Timeline ${MODULE_Timeline_VERSION} composer \
 && /usr/local/bin/build_modules_themes.sh themes gu-gridh freedom saga -
 
