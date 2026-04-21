@@ -49,6 +49,7 @@ RUN /usr/local/bin/build_modules_themes.sh modules omeka-s-modules CopyResources
 && /usr/local/bin/build_modules_themes.sh themes didoc thanksroy ${THEME_ThanksRoy_VERSION} -
 
 COPY config/ /var/www/html/config/
+COPY SearchingForm.php /var/www/html/modules/AdvancedSearch/src/Site/BlockLayout/
 RUN chown www-data:www-data /var/www/html/config/cleanurl.config.php
 COPY .htaccess /var/www/html/.htaccess
 COPY docker-entrypoint.sh /
