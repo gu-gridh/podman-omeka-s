@@ -39,7 +39,7 @@ services:
       context: .
       args:
         MODULE_AdvancedResourceTemplate_VERSION: "3.4.45"
-        MODULE_AdvancedSearch_VERSION: "3.4.55"
+        MODULE_AdvancedSearch_VERSION: "3.4.56"
         MODULE_AnalyticsSnippet_VERSION: "3.4.5"
         MODULE_AnalyticsSnippetPiwik_VERSION: "3.4.8"
         MODULE_BlockPlus_VERSION: "3.4.42"
