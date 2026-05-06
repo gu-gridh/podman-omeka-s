@@ -1,5 +1,5 @@
 # podman-omeka-s
-Rootless podman version that works for several Omeka-S projects at the same time.
+Rootless podman version that works for several Omeka-S projects at the same time. The idea is to have a base image that is the same for all Omeka-S instances. For each instance you can add the modules and configurations you want to have for that Omeka-S instance. The shell script build_modules_themes.sh takes care of the dowmloading and installing of modules during the built process. You only need to provide the name and versions of the modules you want to use in the compose file. 
 
 ## First installation
 
@@ -28,7 +28,7 @@ ENV_VOLUME="my/files:/var/www/html/files:Z,U"
 ## When everything is running
 
 - Just do `podman-compose up` for starting and `podman-compose down` for stopping the container within the instance folder of the project you want to start
-- If something behaves weirdly during start up and says that it can't start: Are you sure you stopped a former container? Run down once more to make sure.
+- If something behaves weirdly during start up and says that it can't start: Are you sure you stopped a former container? Run `podman-compose down` once more to make sure.
 - If there is an update: Run build again
 - If the database got an update: Add the db again just like during the first installation (it will overwrite the existing one)
 
