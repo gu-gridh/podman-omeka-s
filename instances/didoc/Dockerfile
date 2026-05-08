@@ -7,6 +7,7 @@ ARG MODULE_AdvancedSearch_VERSION
 ARG MODULE_AnalyticsSnippet_VERSION
 ARG MODULE_AnalyticsSnippetPiwik_VERSION
 ARG MODULE_BlockPlus_VERSION
+ARG MODULE_BulkEdit_VERSION
 ARG MODULE_CleanUrl_VERSION
 ARG MODULE_Common_VERSION
 ARG MODULE_CopyResources_VERSION
@@ -14,7 +15,6 @@ ARG MODULE_CSSEditor_VERSION
 ARG MODULE_CSVImport_VERSION
 ARG MODULE_CustomVocab_VERSION
 ARG MODULE_DataTypeRdf_VERSION
-ARG MODULE_FacetedBrowse_VERSION
 ARG MODULE_InverseProperties_VERSION
 ARG MODULE_Internationalisation_VERSION
 ARG MODULE_Mapping_VERSION
@@ -29,7 +29,6 @@ RUN /usr/local/bin/build_modules_themes.sh modules omeka-s-modules CopyResources
 && /usr/local/bin/build_modules_themes.sh modules omeka-s-modules CSSEditor ${MODULE_CSSEditor_VERSION} - \
 && /usr/local/bin/build_modules_themes.sh modules omeka-s-modules CustomVocab ${MODULE_CustomVocab_VERSION} - \
 && /usr/local/bin/build_modules_themes.sh modules omeka-s-modules CSVImport ${MODULE_CSVImport_VERSION} - \
-&& /usr/local/bin/build_modules_themes.sh modules omeka-s-modules FacetedBrowse ${MODULE_FacetedBrowse_VERSION} - \
 && /usr/local/bin/build_modules_themes.sh modules omeka-s-modules InverseProperties ${MODULE_InverseProperties_VERSION} - \
 && /usr/local/bin/build_modules_themes.sh modules omeka-s-modules Mapping ${MODULE_Mapping_VERSION} - \
 && /usr/local/bin/build_modules_themes.sh modules omeka-s-modules MetadataBrowse ${MODULE_MetadataBrowse_VERSION} - \
@@ -42,6 +41,7 @@ RUN /usr/local/bin/build_modules_themes.sh modules omeka-s-modules CopyResources
 && /usr/local/bin/build_modules_themes.sh modules Daniel-KM CleanUrl ${MODULE_CleanUrl_VERSION} composer \
 && /usr/local/bin/build_modules_themes.sh modules Daniel-KM DataTypeRdf ${MODULE_DataTypeRdf_VERSION} composer \
 && /usr/local/bin/build_modules_themes.sh modules Daniel-KM AdvancedSearch ${MODULE_AdvancedSearch_VERSION} composer \
+&& /usr/local/bin/build_modules_themes.sh modules Daniel-KM BulkEdit ${MODULE_BulkEdit_VERSION} composer \
 && /usr/local/bin/build_modules_themes.sh modules Daniel-KM Internationalisation ${MODULE_Internationalisation_VERSION} composer \
 && /usr/local/bin/build_modules_themes.sh modules Daniel-KM Reference ${MODULE_Reference_VERSION} composer \
 && /usr/local/bin/build_modules_themes.sh modules Daniel-KM SearchSolr ${MODULE_SearchSolr_VERSION} composer \

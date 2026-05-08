@@ -43,6 +43,7 @@ services:
         MODULE_AnalyticsSnippet_VERSION: "3.4.5"
         MODULE_AnalyticsSnippetPiwik_VERSION: "3.4.8"
         MODULE_BlockPlus_VERSION: "3.4.42"
+        MODULE_BulkEdit_VERSION: "3.4.37"
         MODULE_CleanUrl_VERSION: "3.17.10"
         MODULE_Common_VERSION: "3.4.76"
         MODULE_CopyResources_VERSION: "1.0.1"
