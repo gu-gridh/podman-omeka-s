@@ -63,6 +63,7 @@ COPY config/ /var/www/html/config/
 COPY SearchingForm.php /var/www/html/modules/AdvancedSearch/src/Site/BlockLayout/
 RUN chown www-data:www-data /var/www/html/config/cleanurl.config.php
 COPY .htaccess /var/www/html/.htaccess
+COPY php/uploads.ini /usr/local/etc/php/uploads.ini
 
 COPY docker-entrypoint.sh /
 
