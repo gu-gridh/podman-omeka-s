@@ -115,6 +115,9 @@ class SearchingForm extends AbstractBlockLayout implements TemplateableBlockLayo
         $formAction = null;
         if (!$displayResults) {
             $formAction = $searchConfig->siteUrl($site->slug());
+            if (preg_match('#^/s/[^/]+(/.*)$#', $formAction, $matches)) {
+                $formAction = $matches[1];
+             } 
         } elseif ($autoscroll) {
             $formAction = '#block-' . $block->id();
 
