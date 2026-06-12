@@ -26,7 +26,7 @@ const SLUGS_CORE = 'item|item-set|media|page|api|api-context|admin|asset|login|l
 /**
  * Allows to have a main site url without "/s/site-slug".
  */
-const SLUG_MAIN_SITE = 'didoc';
+const SLUG_MAIN_SITE = 'main';
 
 /**
  * Hard coded.
@@ -48,4 +48,4 @@ const SLUG_PAGE = '';
 /**
  * Allows to have site urls without "s/" and page urls without "page/".
  */
-const SLUGS_SITE = 'didoc';
+const SLUGS_SITE = 'main';
