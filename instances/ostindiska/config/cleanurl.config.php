@@ -37,13 +37,13 @@ const SLUG_SITE_DEFAULT = 's/';
  * Rename or remove /s/ from the urls of sites.
  * It must end with "/", or be an empty string. Default: "s/".
  */
-const SLUG_SITE = 's/';
+const SLUG_SITE = '';
 
 /**
  * Rename or remove /page/ from the urls of pages.
  * It must end with "/", or be an empty string. Default: "page/".
  */
-const SLUG_PAGE = 'page/';
+const SLUG_PAGE = '';
 
 /**
  * Allows to have site urls without "s/" and page urls without "page/".
